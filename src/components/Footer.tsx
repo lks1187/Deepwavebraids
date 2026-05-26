@@ -38,6 +38,27 @@ export default function Footer() {
                 </Link>
               </li>
             </ul>
+
+            <h4 className="text-foreground font-semibold mb-4 mt-6 text-sm">
+              Informations légales
+            </h4>
+            <ul className="space-y-2">
+              <li>
+                <Link href="/mentions-legales" className="text-muted hover:text-accent transition-colors text-sm">
+                  Mentions légales
+                </Link>
+              </li>
+              <li>
+                <Link href="/cgv" className="text-muted hover:text-accent transition-colors text-sm">
+                  CGV
+                </Link>
+              </li>
+              <li>
+                <Link href="/politique-confidentialite" className="text-muted hover:text-accent transition-colors text-sm">
+                  Politique de confidentialité
+                </Link>
+              </li>
+            </ul>
           </div>
 
           {/* Contact */}
