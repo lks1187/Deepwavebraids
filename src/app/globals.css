@@ -1,0 +1,71 @@
+@import "tailwindcss";
+
+/* ── Theme: Warm & Earthy (default) ── */
+:root {
+  --background: #FAF6F1;
+  --foreground: #2a2018;
+  --accent: #8B6142;
+  --accent-light: #a67c5b;
+  --accent-soft: #f0e6da;
+  --muted: #8C7A6A;
+  --surface: #F3EDE5;
+  --border: #e0d5c8;
+  --card-bg: #ffffff;
+  --header-bg: rgba(250, 246, 241, 0.85);
+}
+
+/* ── Theme: Noir & Rosé ── */
+[data-theme="dark-rose"] {
+  --background: #0f0f0f;
+  --foreground: #f0ebe8;
+  --accent: #d4a0a0;
+  --accent-light: #e0b8b8;
+  --accent-soft: #2a1f1f;
+  --muted: #999999;
+  --surface: #1a1a1a;
+  --border: #2a2a2a;
+  --card-bg: #161616;
+  --header-bg: rgba(15, 15, 15, 0.85);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-accent: var(--accent);
+  --color-accent-light: var(--accent-light);
+  --color-accent-soft: var(--accent-soft);
+  --color-muted: var(--muted);
+  --color-surface: var(--surface);
+  --color-border: var(--border);
+  --color-card-bg: var(--card-bg);
+  --color-header-bg: var(--header-bg);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+}
