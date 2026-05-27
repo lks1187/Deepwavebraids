@@ -234,11 +234,10 @@ export default async function Home() {
                 className="group flex flex-col items-center gap-3"
               >
                 <div
-                  className="w-20 h-20 sm:w-24 sm:h-24 rounded-full shadow-lg group-hover:scale-110 group-hover:shadow-xl transition-all duration-300 ring-2 ring-offset-2 ring-offset-surface"
+                  className="w-20 h-20 sm:w-24 sm:h-24 rounded-full shadow-lg group-hover:scale-110 group-hover:shadow-xl transition-all duration-300 border-4 border-white outline outline-2"
                   style={{
                     backgroundColor: colorOption.color,
-                    ringColor: colorOption.border,
-                    borderColor: colorOption.border,
+                    outlineColor: colorOption.border,
                   }}
                 />
                 <p className="text-foreground text-sm font-medium group-hover:text-accent transition-colors">
