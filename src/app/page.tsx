@@ -208,7 +208,7 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* Color options with real images */}
+      {/* Color options — swatches */}
       <section className="bg-surface py-16 sm:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
@@ -220,39 +220,30 @@ export default async function Home() {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
+          <div className="flex flex-wrap justify-center gap-8 sm:gap-12">
             {[
-              { name: "Jet Black", image: MODEL_IMAGES[2]?.url, color: "#1a1a1a" },
-              { name: "Honey Blond", image: MODEL_IMAGES[4]?.url, color: "#c8a45c" },
-              { name: "Brown Sugar", image: MODEL_IMAGES[6]?.url, color: "#8B6142" },
-              { name: "Silver Ice", image: MODEL_IMAGES[8]?.url, color: "#b8b8c8" },
-              { name: "Copper Spice", image: MODEL_IMAGES[9]?.url, color: "#b87333" },
+              { name: "Jet Black", color: "#1a1a1a", border: "#333" },
+              { name: "Honey Blond", color: "#c8a45c", border: "#b8944c" },
+              { name: "Brown Sugar", color: "#8B6142", border: "#7a5438" },
+              { name: "Silver Ice", color: "#b8b8c8", border: "#a0a0b0" },
+              { name: "Copper Spice", color: "#b87333", border: "#a06328" },
             ].map((colorOption) => (
               <Link
                 href="/products"
                 key={colorOption.name}
-                className="group relative rounded-2xl overflow-hidden border border-border hover:border-accent/30 hover:shadow-lg hover:shadow-accent/5 transition-all"
+                className="group flex flex-col items-center gap-3"
               >
-                <div className="relative aspect-[3/4]">
-                  {colorOption.image ? (
-                    <Image
-                      src={colorOption.image}
-                      alt={colorOption.name}
-                      fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-500"
-                      sizes="(max-width: 640px) 50vw, 20vw"
-                    />
-                  ) : (
-                    <div
-                      className="w-full h-full"
-                      style={{ backgroundColor: colorOption.color }}
-                    />
-                  )}
-                  {/* Label overlay */}
-                  <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/60 to-transparent p-4">
-                    <p className="text-white font-semibold text-sm">{colorOption.name}</p>
-                  </div>
-                </div>
+                <div
+                  className="w-20 h-20 sm:w-24 sm:h-24 rounded-full shadow-lg group-hover:scale-110 group-hover:shadow-xl transition-all duration-300 ring-2 ring-offset-2 ring-offset-surface"
+                  style={{
+                    backgroundColor: colorOption.color,
+                    ringColor: colorOption.border,
+                    borderColor: colorOption.border,
+                  }}
+                />
+                <p className="text-foreground text-sm font-medium group-hover:text-accent transition-colors">
+                  {colorOption.name}
+                </p>
               </Link>
             ))}
           </div>
