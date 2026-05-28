@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Footer() {
   return (
@@ -7,9 +8,13 @@ export default function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
           {/* Brand */}
           <div>
-            <h3 className="text-xl font-bold mb-4 text-foreground">
-              Deep<span className="text-accent">Wave</span>Braids
-            </h3>
+            <Image
+              src="/logo.png"
+              alt="DeepWaveBraids"
+              width={180}
+              height={50}
+              className="h-10 w-auto mb-4"
+            />
             <p className="text-muted text-sm leading-relaxed">
               Mèches et extensions premium pour des coiffures qui font tourner les têtes.
               Qualité 100% cheveux vierges.

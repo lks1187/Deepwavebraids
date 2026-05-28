@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { ShoppingBag, Menu, X } from "lucide-react";
 import { useState } from "react";
 import { useCart } from "./CartProvider";
@@ -23,10 +24,15 @@ export default function Header() {
           </button>
 
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2">
-            <span className="text-xl sm:text-2xl font-bold tracking-tight text-foreground">
-              Deep<span className="text-accent">Wave</span>Braids
-            </span>
+          <Link href="/" className="flex items-center">
+            <Image
+              src="/logo.png"
+              alt="DeepWaveBraids"
+              width={220}
+              height={60}
+              className="h-10 sm:h-12 w-auto"
+              priority
+            />
           </Link>
 
           {/* Desktop navigation */}
