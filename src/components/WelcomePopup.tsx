@@ -3,6 +3,44 @@
 import { useState, useEffect } from "react";
 import { X, Gift, Copy, Check } from "lucide-react";
 
+const KLAVIYO_COMPANY_ID = "WpRRiD";
+
+async function sendToKlaviyo(email: string) {
+  await fetch(
+    `https://a.klaviyo.com/client/events/?company_id=${KLAVIYO_COMPANY_ID}`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        revision: "2024-10-15",
+      },
+      body: JSON.stringify({
+        data: {
+          type: "event",
+          attributes: {
+            metric: {
+              data: {
+                type: "metric",
+                attributes: { name: "Popup Email Collected" },
+              },
+            },
+            profile: {
+              data: {
+                type: "profile",
+                attributes: { email },
+              },
+            },
+            properties: {
+              source: "Welcome Popup",
+              discount_code: "BIENVENUE10",
+            },
+          },
+        },
+      }),
+    }
+  );
+}
+
 export default function WelcomePopup() {
   const [isOpen, setIsOpen] = useState(false);
   const [copied, setCopied] = useState(false);
@@ -10,11 +48,8 @@ export default function WelcomePopup() {
   const [submitted, setSubmitted] = useState(false);
 
   useEffect(() => {
-    // Don't show if already dismissed or submitted
     const dismissed = localStorage.getItem("dwb_popup_dismissed");
     if (dismissed) return;
-
-    // Show after 5 seconds
     const timer = setTimeout(() => setIsOpen(true), 5000);
     return () => clearTimeout(timer);
   }, []);
@@ -24,13 +59,13 @@ export default function WelcomePopup() {
     localStorage.setItem("dwb_popup_dismissed", "true");
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!email) return;
-    // Store email locally (can be connected to Mailchimp/Klaviyo later)
     localStorage.setItem("dwb_popup_dismissed", "true");
     localStorage.setItem("dwb_subscriber_email", email);
     setSubmitted(true);
+    sendToKlaviyo(email).catch(() => {});
   };
 
   const handleCopy = () => {
