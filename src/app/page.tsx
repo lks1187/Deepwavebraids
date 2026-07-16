@@ -3,6 +3,8 @@ import Image from "next/image";
 import { ArrowRight, Truck, Shield, Star, Sparkles } from "lucide-react";
 import { getAllProducts, type ShopifyProduct } from "@/lib/shopify";
 import { MODEL_IMAGES } from "@/lib/images";
+
+export const revalidate = 60;
 import ProductCard from "@/components/ProductCard";
 
 export default async function Home() {
@@ -32,18 +34,18 @@ export default async function Home() {
             <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-4 py-1.5 mb-6">
               <Sparkles size={14} className="text-white" />
               <span className="text-white/90 text-xs font-medium tracking-wide">
-                100% Cheveux Vierges
+                Qualité Premium Deep Wave
               </span>
             </div>
 
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-[1.1]">
-              Des tresses qui font
-              <span className="block text-accent-light mt-2">tourner les têtes</span>
+              Mèches deep wave pour
+              <span className="block text-accent-light mt-2">boho braids parfaites</span>
             </h1>
 
             <p className="text-white/80 text-lg mt-6 max-w-lg leading-relaxed">
-              Mèches deep wave premium pour des boho braids, knotless braids et
-              coiffures protectrices d&apos;exception. Qualité salon, prix accessible.
+              Mèches deep wave premium pour tes boho braids, knotless braids et
+              coiffures protectrices. Texture douce, zéro emmêlement, prix accessible.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 mt-10">
@@ -64,8 +66,8 @@ export default async function Home() {
 
             <div className="flex gap-8 mt-12 pt-8 border-t border-white/20">
               <div>
-                <p className="text-2xl font-bold text-white">100%</p>
-                <p className="text-white/60 text-xs mt-1">Virgin Hair</p>
+                <p className="text-2xl font-bold text-white">Deep</p>
+                <p className="text-white/60 text-xs mt-1">Wave texture</p>
               </div>
               <div>
                 <p className="text-2xl font-bold text-white">5</p>
@@ -108,7 +110,7 @@ export default async function Home() {
               </div>
               <div>
                 <p className="text-foreground text-sm font-medium">Qualité premium</p>
-                <p className="text-muted text-xs">100% virgin hair</p>
+                <p className="text-muted text-xs">Texture deep wave</p>
               </div>
             </div>
             <div className="flex items-center gap-3 justify-center">
@@ -129,7 +131,7 @@ export default async function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl sm:text-4xl font-bold text-foreground">
-              Le <span className="text-accent">Lookbook</span>
+              Nos <span className="text-accent">Inspirations</span>
             </h2>
             <p className="text-muted mt-4 max-w-md mx-auto">
               Nos clientes portent DeepWaveBraids au quotidien
@@ -175,7 +177,7 @@ export default async function Home() {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
         <div className="text-center mb-12">
           <h2 className="text-3xl sm:text-4xl font-bold text-foreground">
-            Nos <span className="text-accent">Best-Sellers</span>
+            Nos <span className="text-accent">meilleures ventes</span>
           </h2>
           <p className="text-muted mt-4 max-w-md mx-auto">
             Des mèches deep wave sélectionnées pour leur qualité exceptionnelle
@@ -222,11 +224,11 @@ export default async function Home() {
 
           <div className="flex flex-wrap justify-center gap-8 sm:gap-12">
             {[
-              { name: "Jet Black", color: "#1a1a1a", border: "#333" },
-              { name: "Honey Blond", color: "#c8a45c", border: "#b8944c" },
-              { name: "Brown Sugar", color: "#8B6142", border: "#7a5438" },
-              { name: "Silver Ice", color: "#b8b8c8", border: "#a0a0b0" },
-              { name: "Copper Spice", color: "#b87333", border: "#a06328" },
+              { name: "Noir intense", color: "#1a1a1a", border: "#333" },
+              { name: "Blond miel", color: "#c8a45c", border: "#b8944c" },
+              { name: "Châtain doré", color: "#8B6142", border: "#7a5438" },
+              { name: "Gris argenté", color: "#b8b8c8", border: "#a0a0b0" },
+              { name: "Cuivré", color: "#b87333", border: "#a06328" },
             ].map((colorOption) => (
               <Link
                 href="/products"

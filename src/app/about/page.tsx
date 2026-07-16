@@ -28,7 +28,7 @@ export default function AboutPage() {
           DeepWaveBraids est née d&apos;une passion : offrir des mèches et extensions
           de qualité exceptionnelle à un prix accessible. Basée à Genève, notre
           mission est simple — vous permettre de réaliser les plus belles coiffures
-          avec des cheveux 100% vierges.
+          avec des mèches deep wave premium.
         </p>
         <p className="text-muted text-lg leading-relaxed">
           Que ce soit pour des boho braids, des knotless braids ou toute autre
@@ -45,7 +45,7 @@ export default function AboutPage() {
           </div>
           <h3 className="text-foreground font-semibold text-lg mb-2">Qualité Premium</h3>
           <p className="text-muted text-sm leading-relaxed">
-            100% cheveux vierges sélectionnés avec soin. Aucun compromis sur la qualité.
+            Mèches deep wave sélectionnées avec soin. Aucun compromis sur la qualité.
           </p>
         </div>
 

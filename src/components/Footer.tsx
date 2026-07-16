@@ -17,7 +17,7 @@ export default function Footer() {
             />
             <p className="text-muted text-sm leading-relaxed">
               Mèches et extensions premium pour des coiffures qui font tourner les têtes.
-              Qualité 100% cheveux vierges.
+              Mèches deep wave de qualité premium.
             </p>
           </div>
 
@@ -35,6 +35,21 @@ export default function Footer() {
               <li>
                 <Link href="/products" className="text-muted hover:text-accent transition-colors text-sm">
                   Boutique
+                </Link>
+              </li>
+              <li>
+                <Link href="/guide" className="text-muted hover:text-accent transition-colors text-sm">
+                  Guide : Combien de paquets ?
+                </Link>
+              </li>
+              <li>
+                <Link href="/blog" className="text-muted hover:text-accent transition-colors text-sm">
+                  Blog
+                </Link>
+              </li>
+              <li>
+                <Link href="/suivi" className="text-muted hover:text-accent transition-colors text-sm">
+                  Suivre ma commande
                 </Link>
               </li>
               <li>
@@ -61,6 +76,11 @@ export default function Footer() {
               <li>
                 <Link href="/politique-confidentialite" className="text-muted hover:text-accent transition-colors text-sm">
                   Politique de confidentialité
+                </Link>
+              </li>
+              <li>
+                <Link href="/retours" className="text-muted hover:text-accent transition-colors text-sm">
+                  Retours & Remboursements
                 </Link>
               </li>
             </ul>

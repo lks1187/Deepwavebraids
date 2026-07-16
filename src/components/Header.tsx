@@ -50,10 +50,28 @@ export default function Header() {
               Boutique
             </Link>
             <Link
+              href="/guide"
+              className="text-muted hover:text-accent transition-colors text-sm font-medium"
+            >
+              Guide
+            </Link>
+            <Link
+              href="/blog"
+              className="text-muted hover:text-accent transition-colors text-sm font-medium"
+            >
+              Blog
+            </Link>
+            <Link
               href="/about"
               className="text-muted hover:text-accent transition-colors text-sm font-medium"
             >
               À propos
+            </Link>
+            <Link
+              href="/contact"
+              className="text-muted hover:text-accent transition-colors text-sm font-medium"
+            >
+              Contact
             </Link>
           </nav>
 
@@ -90,11 +108,32 @@ export default function Header() {
               Boutique
             </Link>
             <Link
+              href="/guide"
+              onClick={() => setMenuOpen(false)}
+              className="text-muted hover:text-accent transition-colors text-sm font-medium"
+            >
+              Guide
+            </Link>
+            <Link
+              href="/blog"
+              onClick={() => setMenuOpen(false)}
+              className="text-muted hover:text-accent transition-colors text-sm font-medium"
+            >
+              Blog
+            </Link>
+            <Link
               href="/about"
               onClick={() => setMenuOpen(false)}
               className="text-muted hover:text-accent transition-colors text-sm font-medium"
             >
               À propos
+            </Link>
+            <Link
+              href="/contact"
+              onClick={() => setMenuOpen(false)}
+              className="text-muted hover:text-accent transition-colors text-sm font-medium"
+            >
+              Contact
             </Link>
           </nav>
         )}

@@ -126,7 +126,7 @@ export default function CartDrawer() {
               </span>
             </div>
             <a
-              href={cart?.checkoutUrl}
+              href={cart?.checkoutUrl?.replace('deepwavebraids.shop', '3xd69x-1n.myshopify.com').replace('www.deepwavebraids.shop', '3xd69x-1n.myshopify.com')}
               className="block w-full bg-accent hover:bg-accent-light text-white font-semibold py-4 px-6 rounded-2xl text-center transition-colors"
             >
               Commander

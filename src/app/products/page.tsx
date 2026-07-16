@@ -2,9 +2,11 @@ import { Sparkles } from "lucide-react";
 import { getAllProducts, type ShopifyProduct } from "@/lib/shopify";
 import ProductCard from "@/components/ProductCard";
 
+export const revalidate = 60; // Refresh products every 60 seconds
+
 export const metadata = {
   title: "Boutique | DeepWaveBraids",
-  description: "Découvrez notre collection de mèches deep wave et braiding hair 100% cheveux vierges.",
+  description: "Découvrez notre collection de mèches deep wave premium pour boho braids et knotless braids.",
 };
 
 export default async function ProductsPage() {
