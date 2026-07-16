@@ -117,6 +117,122 @@ export default function GuidePage() {
         </div>
       </section>
 
+      {/* Pack guide */}
+      <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
+        <div className="text-center mb-12">
+          <h2 className="text-2xl sm:text-3xl font-bold text-foreground">
+            Quel pack <span className="text-accent">choisir ?</span>
+          </h2>
+          <p className="text-muted mt-3 max-w-lg mx-auto">
+            Tu veux des boho braids canon mais tu sais pas combien de paquets prendre ? On t&apos;explique tout en 30 secondes.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
+          {/* Pack Duo */}
+          <div className="bg-surface rounded-2xl border border-border p-6 hover:border-accent/30 transition-colors">
+            <div className="text-center mb-4">
+              <span className="text-3xl">2</span>
+              <p className="text-foreground font-bold text-lg mt-1">Pack Duo</p>
+              <p className="text-accent font-bold text-xl mt-1">99,90 &euro;</p>
+            </div>
+            <p className="text-foreground text-sm font-medium mb-2 italic">Pour celles qui veulent un petit plus.</p>
+            <p className="text-muted text-sm leading-relaxed">
+              Tu veux rafra&icirc;chir tes tresses ? Ajouter quelques boucles deep wave par-ci par-l&agrave; pour un effet boho l&eacute;ger et naturel ? Le Duo est fait pour toi. Parfait aussi pour les tresses tr&egrave;s fines ou une retouche en milieu de pose.
+            </p>
+            <div className="mt-4 pt-4 border-t border-border">
+              <p className="text-accent text-xs font-medium">Id&eacute;al pour : retouches, effet boho subtil, tresses fines</p>
+            </div>
+            <Link
+              href="/products/pack-duo-2-paquets-deep-wave"
+              className="block mt-4 text-center bg-accent/10 hover:bg-accent/20 text-accent font-semibold py-2.5 px-4 rounded-xl transition-colors text-sm"
+            >
+              Choisir le Duo
+            </Link>
+          </div>
+
+          {/* Pack Trio */}
+          <div className="bg-surface rounded-2xl border border-border p-6 hover:border-accent/30 transition-colors">
+            <div className="text-center mb-4">
+              <span className="text-3xl">3</span>
+              <p className="text-foreground font-bold text-lg mt-1">Pack Trio</p>
+              <p className="text-accent font-bold text-xl mt-1">139,90 &euro;</p>
+            </div>
+            <p className="text-foreground text-sm font-medium mb-2 italic">Le sweet spot pour un rendu naturel.</p>
+            <p className="text-muted text-sm leading-relaxed">
+              Ni trop, ni pas assez. Le Trio te donne un joli volume sans en faire trop &mdash; exactement ce qu&apos;il faut pour une t&ecirc;te petite &agrave; moyenne. Tes tresses classiques auront ce mouvement deep wave qui fait toute la diff&eacute;rence.
+            </p>
+            <div className="mt-4 pt-4 border-t border-border">
+              <p className="text-accent text-xs font-medium">Id&eacute;al pour : t&ecirc;tes petites &agrave; moyennes, volume naturel, tresses classiques</p>
+            </div>
+            <Link
+              href="/products/pack-trio-3-paquets-deep-wave"
+              className="block mt-4 text-center bg-accent/10 hover:bg-accent/20 text-accent font-semibold py-2.5 px-4 rounded-xl transition-colors text-sm"
+            >
+              Choisir le Trio
+            </Link>
+          </div>
+
+          {/* Pack Full Head */}
+          <div className="bg-surface rounded-2xl border-2 border-accent p-6 relative">
+            <div className="absolute -top-3 left-1/2 -translate-x-1/2">
+              <span className="bg-accent text-white text-xs font-bold px-4 py-1 rounded-full">Le plus choisi</span>
+            </div>
+            <div className="text-center mb-4 mt-2">
+              <span className="text-3xl">4</span>
+              <p className="text-foreground font-bold text-lg mt-1">Pack Full Head</p>
+              <p className="text-accent font-bold text-xl mt-1">169,90 &euro;</p>
+            </div>
+            <p className="text-foreground text-sm font-medium mb-2 italic">Pour celles qui ne font pas les choses &agrave; moiti&eacute;.</p>
+            <p className="text-muted text-sm leading-relaxed">
+              Tu veux LE r&eacute;sultat ? Celui qu&apos;on voit sur TikTok ? C&apos;est celui-l&agrave;. 4 paquets = volume glamour, boucles bien fournies de la racine aux pointes. Si tu fais des boho braids compl&egrave;tes, ne prends pas moins. Tu nous remercieras.
+            </p>
+            <div className="mt-4 pt-4 border-t border-border">
+              <p className="text-accent text-xs font-medium">Id&eacute;al pour : t&ecirc;te enti&egrave;re, boho braids fournies, volume max</p>
+            </div>
+            <Link
+              href="/products/pack-full-head-4-paquets-deep-wave"
+              className="block mt-4 text-center bg-accent hover:bg-accent-light text-white font-semibold py-2.5 px-4 rounded-xl transition-colors text-sm"
+            >
+              Choisir le Full Head
+            </Link>
+          </div>
+        </div>
+
+        {/* Summary table */}
+        <div className="mt-10 bg-surface rounded-2xl border border-border overflow-hidden">
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm">
+              <thead>
+                <tr className="bg-accent-soft">
+                  <th className="text-left text-foreground font-bold p-4">Coiffure</th>
+                  <th className="text-left text-foreground font-bold p-4">Pack recommand&eacute;</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-border">
+                <tr>
+                  <td className="p-4 text-muted">Retouches / effet l&eacute;ger</td>
+                  <td className="p-4 text-foreground font-medium">Duo (2 paquets)</td>
+                </tr>
+                <tr>
+                  <td className="p-4 text-muted">Tresses classiques / t&ecirc;te petite</td>
+                  <td className="p-4 text-foreground font-medium">Trio (3 paquets)</td>
+                </tr>
+                <tr>
+                  <td className="p-4 text-muted">Boho braids compl&egrave;tes / volume max</td>
+                  <td className="p-4 text-foreground font-medium">Full Head (4 paquets) &#11088;</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div className="p-4 bg-accent-soft/50 border-t border-border">
+            <p className="text-accent text-sm font-medium text-center">
+              Un doute ? Prends le Full Head. Mieux vaut avoir un paquet en trop qu&apos;une t&ecirc;te &agrave; moiti&eacute; finie.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* By hairstyle */}
       <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
         <div className="text-center mb-12">
@@ -124,7 +240,7 @@ export default function GuidePage() {
             Par type de <span className="text-accent">coiffure</span>
           </h2>
           <p className="text-muted mt-3">
-            Trouve la quantité parfaite selon ton style
+            Trouve la quantit&eacute; parfaite selon ton style
           </p>
         </div>
 
