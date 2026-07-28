@@ -73,6 +73,10 @@ const PRODUCT_CARD_FRAGMENT = `
             amount
             currencyCode
           }
+          compareAtPrice {
+            amount
+            currencyCode
+          }
           selectedOptions {
             name
             value
@@ -402,6 +406,10 @@ export type ShopifyVariant = {
     amount: string;
     currencyCode: string;
   };
+  compareAtPrice: {
+    amount: string;
+    currencyCode: string;
+  } | null;
   selectedOptions: {
     name: string;
     value: string;

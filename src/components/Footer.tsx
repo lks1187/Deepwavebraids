@@ -1,12 +1,16 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
+import { useI18n } from "@/i18n/context";
 
 export default function Footer() {
+  const { locale, t } = useI18n();
+
   return (
     <footer className="bg-surface border-t border-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
-          {/* Brand */}
           <div>
             <Image
               src="/logo.png"
@@ -16,83 +20,80 @@ export default function Footer() {
               className="h-10 w-auto mb-4"
             />
             <p className="text-muted text-sm leading-relaxed">
-              Mèches et extensions premium pour des coiffures qui font tourner les têtes.
-              Mèches deep wave de qualité premium.
+              {t.footer.description}
             </p>
           </div>
 
-          {/* Links */}
           <div>
             <h4 className="text-foreground font-semibold mb-4 text-sm">
-              Navigation
+              {t.footer.navigation}
             </h4>
             <ul className="space-y-2">
               <li>
-                <Link href="/" className="text-muted hover:text-accent transition-colors text-sm">
-                  Accueil
+                <Link href={`/${locale}`} className="text-muted hover:text-accent transition-colors text-sm">
+                  {t.nav.home}
                 </Link>
               </li>
               <li>
-                <Link href="/products" className="text-muted hover:text-accent transition-colors text-sm">
-                  Boutique
+                <Link href={`/${locale}/products`} className="text-muted hover:text-accent transition-colors text-sm">
+                  {t.nav.shop}
                 </Link>
               </li>
               <li>
-                <Link href="/guide" className="text-muted hover:text-accent transition-colors text-sm">
-                  Guide : Combien de paquets ?
+                <Link href={`/${locale}/guide`} className="text-muted hover:text-accent transition-colors text-sm">
+                  {t.footer.guideLink}
                 </Link>
               </li>
               <li>
-                <Link href="/blog" className="text-muted hover:text-accent transition-colors text-sm">
-                  Blog
+                <Link href={`/${locale}/blog`} className="text-muted hover:text-accent transition-colors text-sm">
+                  {t.nav.blog}
                 </Link>
               </li>
               <li>
-                <Link href="/suivi" className="text-muted hover:text-accent transition-colors text-sm">
-                  Suivre ma commande
+                <Link href={`/${locale}/suivi`} className="text-muted hover:text-accent transition-colors text-sm">
+                  {t.footer.trackOrder}
                 </Link>
               </li>
               <li>
-                <Link href="/about" className="text-muted hover:text-accent transition-colors text-sm">
-                  À propos
+                <Link href={`/${locale}/about`} className="text-muted hover:text-accent transition-colors text-sm">
+                  {t.nav.about}
                 </Link>
               </li>
             </ul>
 
             <h4 className="text-foreground font-semibold mb-4 mt-6 text-sm">
-              Informations légales
+              {t.footer.legal}
             </h4>
             <ul className="space-y-2">
               <li>
-                <Link href="/mentions-legales" className="text-muted hover:text-accent transition-colors text-sm">
-                  Mentions légales
+                <Link href={`/${locale}/mentions-legales`} className="text-muted hover:text-accent transition-colors text-sm">
+                  {t.footer.legalNotice}
                 </Link>
               </li>
               <li>
-                <Link href="/cgv" className="text-muted hover:text-accent transition-colors text-sm">
-                  CGV
+                <Link href={`/${locale}/cgv`} className="text-muted hover:text-accent transition-colors text-sm">
+                  {t.footer.terms}
                 </Link>
               </li>
               <li>
-                <Link href="/politique-confidentialite" className="text-muted hover:text-accent transition-colors text-sm">
-                  Politique de confidentialité
+                <Link href={`/${locale}/politique-confidentialite`} className="text-muted hover:text-accent transition-colors text-sm">
+                  {t.footer.privacy}
                 </Link>
               </li>
               <li>
-                <Link href="/retours" className="text-muted hover:text-accent transition-colors text-sm">
-                  Retours & Remboursements
+                <Link href={`/${locale}/retours`} className="text-muted hover:text-accent transition-colors text-sm">
+                  {t.footer.returns}
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Contact */}
           <div>
             <h4 className="text-foreground font-semibold mb-4 text-sm">
-              Contact
+              {t.footer.contactTitle}
             </h4>
             <ul className="space-y-2 text-muted text-sm">
-              <li>Genève, Suisse</li>
+              <li>{t.footer.location}</li>
               <li>
                 <a href="mailto:contact@deepwavebraids.shop" className="hover:text-accent transition-colors">
                   contact@deepwavebraids.shop
@@ -122,7 +123,7 @@ export default function Footer() {
 
         <div className="border-t border-border mt-8 pt-8 text-center">
           <p className="text-muted/50 text-xs">
-            &copy; {new Date().getFullYear()} DeepWaveBraids. Tous droits réservés.
+            &copy; {new Date().getFullYear()} DeepWaveBraids. {t.footer.rights}
           </p>
         </div>
       </div>

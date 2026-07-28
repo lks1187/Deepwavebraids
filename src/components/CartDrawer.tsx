@@ -3,10 +3,12 @@
 import { X, Minus, Plus, ShoppingBag } from "lucide-react";
 import Image from "next/image";
 import { useCart } from "./CartProvider";
+import { useI18n } from "@/i18n/context";
 import { formatPrice } from "@/lib/utils";
 
 export default function CartDrawer() {
   const { cart, isOpen, isLoading, closeCart, updateItem, removeItem } = useCart();
+  const { t } = useI18n();
 
   if (!isOpen) return null;
 
@@ -14,19 +16,16 @@ export default function CartDrawer() {
 
   return (
     <>
-      {/* Overlay */}
       <div
         className="fixed inset-0 bg-foreground/20 z-50 backdrop-blur-sm"
         onClick={closeCart}
       />
 
-      {/* Drawer */}
       <div className="fixed right-0 top-0 h-full w-full max-w-md bg-background z-50 flex flex-col border-l border-border shadow-2xl">
-        {/* Header */}
         <div className="flex items-center justify-between p-5 border-b border-border">
           <h2 className="text-foreground font-semibold text-lg flex items-center gap-2">
             <ShoppingBag size={20} className="text-accent" />
-            Mon Panier
+            {t.cart.title}
           </h2>
           <button
             onClick={closeCart}
@@ -36,13 +35,12 @@ export default function CartDrawer() {
           </button>
         </div>
 
-        {/* Items */}
         <div className="flex-1 overflow-y-auto p-5">
           {lines.length === 0 ? (
             <div className="flex flex-col items-center justify-center h-full text-muted">
               <ShoppingBag size={48} className="mb-4 text-border" />
-              <p className="text-lg font-medium">Ton panier est vide</p>
-              <p className="text-sm mt-2">Ajoute des produits pour commencer</p>
+              <p className="text-lg font-medium">{t.cart.empty}</p>
+              <p className="text-sm mt-2">{t.cart.emptySubtitle}</p>
             </div>
           ) : (
             <div className="space-y-4">
@@ -113,11 +111,10 @@ export default function CartDrawer() {
           )}
         </div>
 
-        {/* Footer */}
         {lines.length > 0 && (
           <div className="border-t border-border p-5 space-y-4">
             <div className="flex items-center justify-between">
-              <span className="text-muted">Total</span>
+              <span className="text-muted">{t.cart.total}</span>
               <span className="text-foreground font-bold text-xl">
                 {formatPrice(
                   cart?.cost.totalAmount.amount || "0",
@@ -129,10 +126,10 @@ export default function CartDrawer() {
               href={cart?.checkoutUrl?.replace('deepwavebraids.shop', '3xd69x-1n.myshopify.com').replace('www.deepwavebraids.shop', '3xd69x-1n.myshopify.com')}
               className="block w-full bg-accent hover:bg-accent-light text-white font-semibold py-4 px-6 rounded-2xl text-center transition-colors"
             >
-              Commander
+              {t.cart.checkout}
             </a>
             <p className="text-muted text-xs text-center">
-              Livraison calculée à l&apos;étape suivante
+              {t.cart.shippingNote}
             </p>
           </div>
         )}
