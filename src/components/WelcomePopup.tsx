@@ -7,7 +7,7 @@ import { useI18n } from "@/i18n/context";
 const KLAVIYO_COMPANY_ID = "WpRRiD";
 
 async function sendToKlaviyo(email: string, discountCode: string) {
-  await fetch(
+  const res = await fetch(
     `https://a.klaviyo.com/client/events/?company_id=${KLAVIYO_COMPANY_ID}`,
     {
       method: "POST",
@@ -40,6 +40,7 @@ async function sendToKlaviyo(email: string, discountCode: string) {
       }),
     }
   );
+  if (!res.ok) throw new Error(`Klaviyo error: ${res.status}`);
 }
 
 export default function WelcomePopup() {
@@ -62,13 +63,20 @@ export default function WelcomePopup() {
     localStorage.setItem("dwb_popup_dismissed", "true");
   };
 
+  const [klaviyoError, setKlaviyoError] = useState(false);
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!email) return;
     localStorage.setItem("dwb_popup_dismissed", "true");
     localStorage.setItem("dwb_subscriber_email", email);
     setSubmitted(true);
-    sendToKlaviyo(email, promoCode).catch(() => {});
+    try {
+      await sendToKlaviyo(email, promoCode);
+    } catch (err) {
+      console.error("Klaviyo subscription failed:", err);
+      setKlaviyoError(true);
+    }
   };
 
   const handleCopy = () => {
@@ -161,6 +169,14 @@ export default function WelcomePopup() {
                   )}
                 </button>
               </div>
+
+              {klaviyoError && (
+                <p className="text-orange-500 text-xs mt-3">
+                  {locale === "en"
+                    ? "We couldn't register your email. You can still use the code!"
+                    : "Nous n'avons pas pu enregistrer votre email. Le code reste valable !"}
+                </p>
+              )}
 
               <p className="text-muted text-xs mt-4">
                 {t.popup.useCode}

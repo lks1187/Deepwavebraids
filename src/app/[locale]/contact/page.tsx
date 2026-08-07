@@ -5,16 +5,74 @@ import Link from "next/link";
 import { ArrowLeft, Mail, MessageCircle, Clock, Send, Check, Phone } from "lucide-react";
 import { useI18n } from "@/i18n/context";
 
+const KLAVIYO_COMPANY_ID = "WpRRiD";
+
+async function sendContactToKlaviyo(data: { name: string; email: string; subject: string; message: string }) {
+  const res = await fetch(
+    `https://a.klaviyo.com/client/events/?company_id=${KLAVIYO_COMPANY_ID}`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        revision: "2024-10-15",
+      },
+      body: JSON.stringify({
+        data: {
+          type: "event",
+          attributes: {
+            metric: {
+              data: {
+                type: "metric",
+                attributes: { name: "Contact Form Submitted" },
+              },
+            },
+            profile: {
+              data: {
+                type: "profile",
+                attributes: {
+                  email: data.email,
+                  first_name: data.name,
+                },
+              },
+            },
+            properties: {
+              source: "Contact Page",
+              subject: data.subject,
+              message: data.message,
+              name: data.name,
+            },
+          },
+        },
+      }),
+    }
+  );
+  if (!res.ok) throw new Error(`Klaviyo error: ${res.status}`);
+}
+
 export default function ContactPage() {
   const [formData, setFormData] = useState({ name: "", email: "", subject: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
   const { locale, t } = useI18n();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState("");
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const mailtoUrl = `mailto:contact@deepwavebraids.shop?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(`${t.contact.mailtoGreeting},\n\n${formData.message}\n\n${t.contact.mailtoClosing},\n${formData.name}\n${formData.email}`)}`;
-    window.open(mailtoUrl, "_blank");
-    setSubmitted(true);
+    setSending(true);
+    setError("");
+
+    try {
+      await sendContactToKlaviyo(formData);
+      setSubmitted(true);
+    } catch {
+      setError(locale === "en"
+        ? "Failed to send. Please try WhatsApp or email us directly."
+        : "Échec de l'envoi. Essayez WhatsApp ou écrivez-nous directement."
+      );
+    } finally {
+      setSending(false);
+    }
   };
 
   return (
@@ -119,12 +177,19 @@ export default function ContactPage() {
                   />
                 </div>
 
+                {error && (
+                  <p className="text-red-500 text-sm text-center">{error}</p>
+                )}
+
                 <button
                   type="submit"
-                  className="w-full bg-accent hover:bg-accent-light text-white font-semibold py-3.5 px-6 rounded-xl transition-all text-sm shadow-lg shadow-accent/25 flex items-center justify-center gap-2 hover:-translate-y-0.5"
+                  disabled={sending}
+                  className="w-full bg-accent hover:bg-accent-light text-white font-semibold py-3.5 px-6 rounded-xl transition-all text-sm shadow-lg shadow-accent/25 flex items-center justify-center gap-2 hover:-translate-y-0.5 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   <Send size={16} />
-                  {t.contact.send}
+                  {sending
+                    ? (locale === "en" ? "Sending..." : "Envoi en cours...")
+                    : t.contact.send}
                 </button>
               </form>
             ) : (

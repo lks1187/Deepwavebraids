@@ -14,7 +14,7 @@ export default function Header() {
   const itemCount = cart?.totalQuantity || 0;
 
   const otherLocale = locale === "fr" ? "en" : "fr";
-  const otherLabel = locale === "fr" ? "EN" : "FR";
+  const currentLabel = locale.toUpperCase();
 
   const navLinks = [
     { href: `/${locale}`, label: t.nav.home },
@@ -66,7 +66,7 @@ export default function Header() {
               className="flex items-center gap-1 text-muted hover:text-accent transition-colors p-2 text-sm font-medium"
             >
               <Globe size={16} />
-              {otherLabel}
+              {currentLabel}
             </Link>
 
             <button
