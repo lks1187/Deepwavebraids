@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { ArrowLeft, Mail, MessageCircle, Clock, Send, Check } from "lucide-react";
+import { ArrowLeft, Mail, MessageCircle, Clock, Send, Check, Phone } from "lucide-react";
 import { useI18n } from "@/i18n/context";
 
 export default function ContactPage() {
@@ -35,6 +35,11 @@ export default function ContactPage() {
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           <div className="lg:col-span-1 space-y-4">
+            <div className="bg-surface rounded-2xl border border-border p-5">
+              <Phone size={22} className="text-accent mb-3" />
+              <h3 className="text-foreground font-semibold text-sm">{locale === "en" ? "Phone" : "Téléphone"}</h3>
+              <a href="tel:+33756885510" className="text-accent text-sm mt-1 block">+33 7 56 88 55 10</a>
+            </div>
             <div className="bg-surface rounded-2xl border border-border p-5">
               <Mail size={22} className="text-accent mb-3" />
               <h3 className="text-foreground font-semibold text-sm">{t.contact.email}</h3>

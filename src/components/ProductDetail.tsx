@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import { formatPrice } from "@/lib/utils";
 import { cn } from "@/lib/utils";
@@ -8,6 +8,7 @@ import AddToCartButton from "./AddToCartButton";
 import { Star, Droplets, Wind, Shield, Clock, ChevronDown, Check } from "lucide-react";
 import type { ShopifyProduct } from "@/lib/shopify";
 import { useI18n } from "@/i18n/context";
+import { trackViewContent } from "./TikTokPixel";
 
 const PACKS = [
   { id: 1, qty: 1, price: 59.9, original: 0 },
@@ -178,6 +179,18 @@ export default function ProductDetail({ product }: Props) {
 
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const [selectedPackIndex, setSelectedPackIndex] = useState(1);
+
+  const basePrice = parseFloat(variants[0]?.price?.amount || "0");
+
+  useEffect(() => {
+    trackViewContent({
+      content_id: product.id,
+      content_name: product.title,
+      content_type: "product",
+      price: basePrice,
+      currency: variants[0]?.price?.currencyCode || "EUR",
+    });
+  }, [product.id]);
 
   const selectedVariant = variants.find((v) =>
     v.selectedOptions.every((opt) => selectedOptions[opt.name] === opt.value)
@@ -354,6 +367,9 @@ export default function ProductDetail({ product }: Props) {
             availableForSale={selectedVariant?.availableForSale ?? true}
             quantity={pack.qty}
             displayPrice={packPrice}
+            productTitle={product.title}
+            price={pack.price}
+            currency={variants[0]?.price?.currencyCode || "EUR"}
           />
         </div>
 

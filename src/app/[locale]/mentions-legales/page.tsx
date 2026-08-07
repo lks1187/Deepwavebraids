@@ -77,7 +77,13 @@ export default async function MentionsLegales({
                 <li key={f.label}><strong>{f.label}</strong> {f.value}</li>
               ))}
               <li>
-                <strong>Email:</strong>{" "}
+                <strong>{locale === "en" ? "Phone:" : "Téléphone :"}</strong>{" "}
+                <a href="tel:+33756885510" className="text-accent hover:underline">
+                  +33 7 56 88 55 10
+                </a>
+              </li>
+              <li>
+                <strong>Email :</strong>{" "}
                 <a href="mailto:contact@deepwavebraids.shop" className="text-accent hover:underline">
                   contact@deepwavebraids.shop
                 </a>

@@ -95,6 +95,11 @@ export default function Footer() {
             <ul className="space-y-2 text-muted text-sm">
               <li>{t.footer.location}</li>
               <li>
+                <a href="tel:+33756885510" className="hover:text-accent transition-colors">
+                  +33 7 56 88 55 10
+                </a>
+              </li>
+              <li>
                 <a href="mailto:contact@deepwavebraids.shop" className="hover:text-accent transition-colors">
                   contact@deepwavebraids.shop
                 </a>

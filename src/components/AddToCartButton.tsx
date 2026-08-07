@@ -4,21 +4,32 @@ import { ShoppingBag, Loader2 } from "lucide-react";
 import { useCart } from "./CartProvider";
 import { useState } from "react";
 import { useI18n } from "@/i18n/context";
+import { trackAddToCart } from "./TikTokPixel";
 
 type Props = {
   variantId: string;
   availableForSale: boolean;
   quantity?: number;
   displayPrice?: string;
+  productTitle?: string;
+  price?: number;
+  currency?: string;
 };
 
-export default function AddToCartButton({ variantId, availableForSale, quantity = 1, displayPrice }: Props) {
+export default function AddToCartButton({ variantId, availableForSale, quantity = 1, displayPrice, productTitle, price, currency = "EUR" }: Props) {
   const { addItem } = useCart();
   const [loading, setLoading] = useState(false);
   const { locale } = useI18n();
 
   const handleAdd = async () => {
     setLoading(true);
+    trackAddToCart({
+      content_id: variantId,
+      content_name: productTitle || "",
+      price: price || 0,
+      currency,
+      quantity,
+    });
     await addItem(variantId, quantity);
     setLoading(false);
   };

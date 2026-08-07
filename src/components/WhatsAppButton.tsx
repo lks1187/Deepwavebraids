@@ -4,7 +4,7 @@ import { useState } from "react";
 import { X, MessageCircle } from "lucide-react";
 import { useI18n } from "@/i18n/context";
 
-const WHATSAPP_NUMBER = "41787000000"; // TODO: Replace with Randy's real WhatsApp number
+const WHATSAPP_NUMBER = "33756885510";
 
 const messages = {
   fr: {
