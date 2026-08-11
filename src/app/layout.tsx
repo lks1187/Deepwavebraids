@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist } from "next/font/google";
 import { Suspense } from "react";
 import TikTokPixel from "@/components/TikTokPixel";
+import GoogleAnalytics from "@/components/GoogleAnalytics";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -22,6 +23,7 @@ export default function RootLayout({
   return (
     <html lang="fr" className={`${geistSans.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col bg-background">
+        <GoogleAnalytics />
         <Suspense fallback={null}>
           <TikTokPixel />
         </Suspense>
